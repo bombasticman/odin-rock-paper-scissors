@@ -48,6 +48,8 @@ function playRound(humanChoice, computerChoice) {
             }
             break
     }
+    document.getElementById("human").textContent = humanScore
+    document.getElementById("computer").textContent = computerScore
     console.log("HUMAN" + "----" + "COMPUTER")
     console.log(humanScore + "----" + computerScore)
 }
@@ -55,9 +57,11 @@ function playRound(humanChoice, computerChoice) {
 function check_gamestate(humanScore, computerScore) {
     if (humanScore == 5) {
         console.log("HUMAN WINS WINS THE GAME")
+        document.getElementById("winner").textContent = "HUMAN WINS"
         return false
     } else if (computerScore == 5){
         console.log("COMPUTER WINS THE GAME")
+        document.getElementById("winner").textContent = "COMPUTER WINS"
         return false
     }
 }
@@ -75,6 +79,7 @@ paper_button.addEventListener("click", handle_click)
 scissors_button.addEventListener("click", handle_click)
 
 function handle_click(event) {
+    document.getElementById("winner").textContent = ""
     const human_choice = event.target.textContent
     playRound(human_choice, getComputerChoice())
     if (check_gamestate(humanScore, computerScore) == false) {
