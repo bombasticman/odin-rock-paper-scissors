@@ -73,17 +73,14 @@ let humanScore = 0
 let computerScore = 0
 let gameState = true
 while(gameState) {
-    let computerChoice = getComputerChoice()
+    let computerChoice = "paper"
     let humanChoice = getHumanChoice()
     playRound(humanChoice, computerChoice)
-    if(humanScore == 5 || computerChoice == 5){
-        switch(humanScore){
-            case humanScore>computerScore:
-                console.log("HUMAN WINS")
-                break
-            case humanScore<computerScore:
-                console.log("COMPUTER WINS")
-                break
+    if(humanScore == 5 || computerScore == 5){
+        if (humanScore > computerScore){
+          console.log("HUMAN WINS THE GAME");
+        } else if (humanScore < computerScore){
+        console.log("COMPUTER WINS THE GAME");
         }
         gameState = false
     }
