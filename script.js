@@ -73,7 +73,7 @@ let humanScore = 0
 let computerScore = 0
 let gameState = true
 while(gameState) {
-    let computerChoice = "paper"
+    let computerChoice = getComputerChoice()
     let humanChoice = getHumanChoice()
     playRound(humanChoice, computerChoice)
     if(humanScore == 5 || computerScore == 5){
