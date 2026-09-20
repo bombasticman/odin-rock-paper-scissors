@@ -52,9 +52,12 @@ function playRound(humanChoice, computerChoice) {
     console.log(humanScore + "----" + computerScore)
 }
 
-function handle_click(event) {
-    const human_choice = event.target.textContent
-    playRound(human_choice, getComputerChoice())
+function check_gamestate(humanScore, computerScore) {
+    if (humanScore == 5) {
+        console.log("HUMAN WINS WINS THE GAME")
+    } else if (computerScore == 5){
+        console.log("COMPUTER WINS THE GAME")
+    }
 }
 
 let humanScore = 0
@@ -68,3 +71,9 @@ const scissors_button = document.getElementById("scissors")
 rock_button.addEventListener("click", handle_click)
 paper_button.addEventListener("click", handle_click)
 scissors_button.addEventListener("click", handle_click)
+
+function handle_click(event) {
+    const human_choice = event.target.textContent
+    playRound(human_choice, getComputerChoice())
+    check_gamestate(humanScore, computerScore)
+}
