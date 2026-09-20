@@ -33,11 +33,6 @@ function getHumanChoice() {
     return choice
 }
 
-let computerChoice = getComputerChoice()
-let humanChoice = getHumanChoice()
-let humanScore = 0
-let computerScore = 0
-
 function playRound(humanChoice, computerChoice) {
     if (humanChoice == computerChoice) {
         console.log("DRAW!")
@@ -74,5 +69,22 @@ function playRound(humanChoice, computerChoice) {
     console.log("HUMAN" + "----" + "COMPUTER")
     console.log(humanScore + "----" + computerScore)
 }
-console.log(humanChoice, computerChoice)
-playRound(humanChoice, computerChoice)
+let humanScore = 0
+let computerScore = 0
+let gameState = true
+while(gameState) {
+    let computerChoice = getComputerChoice()
+    let humanChoice = getHumanChoice()
+    playRound(humanChoice, computerChoice)
+    if(humanScore == 5 || computerChoice == 5){
+        switch(humanScore){
+            case humanScore>computerScore:
+                console.log("HUMAN WINS")
+                break
+            case humanScore<computerScore:
+                console.log("COMPUTER WINS")
+                break
+        }
+        gameState = false
+    }
+}
