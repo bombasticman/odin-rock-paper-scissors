@@ -14,26 +14,8 @@ function getComputerChoice() {
     return choice
 }
 
-function getHumanChoice() {
-    let choice
-    switch(prompt("Please input your choice.").toLowerCase()){
-        case "rock":
-            choice = "rock"
-            break
-        case "paper":
-            choice = "paper"
-            break
-        case "scissors":
-            choice = "scissors"
-            break
-        default:
-            choice = "Please input the numbers indicated on the prompt"
-            break
-    }
-    return choice
-}
-
 function playRound(humanChoice, computerChoice) {
+    humanChoice = humanChoice.toLowerCase()
     if (humanChoice == computerChoice) {
         console.log("DRAW!")
     }
@@ -69,19 +51,20 @@ function playRound(humanChoice, computerChoice) {
     console.log("HUMAN" + "----" + "COMPUTER")
     console.log(humanScore + "----" + computerScore)
 }
+
+function handle_click(event) {
+    const human_choice = event.target.textContent
+    playRound(human_choice, getComputerChoice())
+}
+
 let humanScore = 0
 let computerScore = 0
 let gameState = true
-while(gameState) {
-    let computerChoice = getComputerChoice()
-    let humanChoice = getHumanChoice()
-    playRound(humanChoice, computerChoice)
-    if(humanScore == 5 || computerScore == 5){
-        if (humanScore > computerScore){
-          console.log("HUMAN WINS THE GAME");
-        } else if (humanScore < computerScore){
-        console.log("COMPUTER WINS THE GAME");
-        }
-        gameState = false
-    }
-}
+let humanChoice
+let computerChoice
+const rock_button = document.getElementById("rock")
+const paper_button = document.getElementById("paper")
+const scissors_button = document.getElementById("scissors")
+rock_button.addEventListener("click", handle_click)
+paper_button.addEventListener("click", handle_click)
+scissors_button.addEventListener("click", handle_click)
