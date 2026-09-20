@@ -16,14 +16,14 @@ function getComputerChoice() {
 
 function getHumanChoice() {
     let choice
-    switch(prompt("Please input your choice. 0 = rock 1 = paper 2 = scissors")){
-        case "0":
+    switch(prompt("Please input your choice.").toLowerCase()){
+        case "rock":
             choice = "rock"
             break
-        case "1":
+        case "paper":
             choice = "paper"
             break
-        case "2":
+        case "scissors":
             choice = "scissors"
             break
         default:
@@ -33,7 +33,46 @@ function getHumanChoice() {
     return choice
 }
 
-const computerChoice = getComputerChoice()
-const humanChoice = getHumanChoice()
-console.log(computerChoice)
-console.log(humanChoice)
+let computerChoice = getComputerChoice()
+let humanChoice = getHumanChoice()
+let humanScore = 0
+let computerScore = 0
+
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice == computerChoice) {
+        console.log("DRAW!")
+    }
+    switch(humanChoice) {
+        case "rock":
+            if (computerChoice == "paper"){
+                console.log("COMPUTER WINS")
+                computerScore = computerScore + 1
+            } else {
+                console.log("HUMAN WINS")
+                humanScore = humanScore + 1
+            }
+            break
+        case "paper":
+            if (computerChoice == "scissors"){
+                console.log("COMPUTER WINS")
+                computerScore = computerScore + 1
+            } else {
+                console.log("HUMAN WINS")
+                humanScore = humanScore + 1
+            }
+            break
+        case "scissors":
+            if (computerChoice == "rock"){
+                console.log("COMPUTER WINS")
+                computerScore = computerScore + 1
+            } else {
+                console.log("HUMAN WINS")
+                humanScore = humanScore + 1
+            }
+            break
+    }
+    console.log("HUMAN" + "----" + "COMPUTER")
+    console.log(humanScore + "----" + computerScore)
+}
+console.log(humanChoice, computerChoice)
+playRound(humanChoice, computerChoice)
