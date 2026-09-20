@@ -55,8 +55,10 @@ function playRound(humanChoice, computerChoice) {
 function check_gamestate(humanScore, computerScore) {
     if (humanScore == 5) {
         console.log("HUMAN WINS WINS THE GAME")
+        return false
     } else if (computerScore == 5){
         console.log("COMPUTER WINS THE GAME")
+        return false
     }
 }
 
@@ -75,5 +77,8 @@ scissors_button.addEventListener("click", handle_click)
 function handle_click(event) {
     const human_choice = event.target.textContent
     playRound(human_choice, getComputerChoice())
-    check_gamestate(humanScore, computerScore)
+    if (check_gamestate(humanScore, computerScore) == false) {
+        humanScore = 0
+        computerScore = 0
+    }
 }
